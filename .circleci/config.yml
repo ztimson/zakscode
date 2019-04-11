@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: Build
-          command: yarn build
+          command: yarn build -c ${CIRCLE_BRANCH}
 
       - persist_to_workspace:
           root: ./
@@ -56,7 +56,7 @@ jobs:
 
       - run:
           name: Deploy
-          command: gsutil cp -r dist/ZaksCode/* gs://staging.zaks-code.appspot.com
+          command: gsutil cp -r dist/ZaksCode/* gs://staging.zakscode.com
 
   deploy-prod:
     docker:
