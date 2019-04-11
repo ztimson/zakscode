@@ -21,7 +21,8 @@ jobs:
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
-          path: node_modules
+          paths:
+            - node_modules
 
       - run:
           name: Build
@@ -29,7 +30,8 @@ jobs:
 
       - persist_to_workspace:
           root: ./
-          path: ./dist/ZaksCode
+          paths:
+            - dist/ZaksCode
 
       - store_artifacts:
           path: ./dist/ZaksCode
