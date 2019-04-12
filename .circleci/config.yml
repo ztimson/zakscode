@@ -78,7 +78,7 @@ jobs:
 
       - run:
           name: Depoly
-          command: gsutil cp -r dist/ZaksCode/* gs://zaks-code.appspot.com
+          command: gsutil cp -r dist/ZaksCode/* gs://www.zakscode.com
 
 workflows:
   version: 2
