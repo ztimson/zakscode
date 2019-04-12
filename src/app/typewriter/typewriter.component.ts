@@ -1,28 +1,18 @@
 import {Component, Input} from '@angular/core';
-import {timer} from 'rxjs';
+import {Observable, timer} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'typewriter',
-  template: `<div class="d-inline typewriter"><h1>{{output}}</h1></div>`,
+  template: `<div class="d-inline typewriter"><h1>{{output | async}}</h1></div>`,
   styleUrls: ['typewriter.component.scss']
 })
 export class TypewriterComponent {
   @Input() text: string;
 
-  done = true;
-  output: string;
+  output: Observable<string>;
 
   constructor() {
-    timer(1500, 100).subscribe(() => {
-      console.log('fire');
-      if(this.done && this.text) {
-        this.output = '';
-        this.done = false;
-      }
-
-      this.output += this.text.slice(0, 1);
-      this.text = this.text.slice(1);
-      if(!this.text) this.done = true;
-    });
+    this.output = timer(1500, 100).pipe(filter(n => n <= this.text.length), map(n => this.text.slice(0, n)))
   }
 }
