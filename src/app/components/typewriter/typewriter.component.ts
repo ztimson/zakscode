@@ -9,8 +9,8 @@ import {filter, map} from 'rxjs/operators';
     styleUrls: ['typewriter.component.scss']
 })
 export class TypewriterComponent {
-    readonly delay = 1500;
-    readonly speed = 100;
+    @Input() delay = 1500;
+    @Input() speed = 100;
 
     @Input()
     set text(text: string) {

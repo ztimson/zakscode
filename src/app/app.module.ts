@@ -12,15 +12,19 @@ import {SlideShowComponent} from './components/slideShow/slideShow.component';
 import {environment} from '../environments/environment';
 import {AppComponent} from './app.component';
 import {AppRouting} from './app.routing';
+import {AdminComponent} from './admin/admin.component';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
     declarations: [
+        AdminComponent,
         AppComponent,
         HomeComponent,
         SlideShowComponent,
         TypewriterComponent
     ],
     imports: [
+        AngularFireAuthModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AppRouting,
