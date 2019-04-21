@@ -14,7 +14,7 @@ export class TypewriterComponent {
 
     @Input()
     set text(text: string) {
-        this.output = timer(this.delay, this.speed).pipe(filter(n => n <= text.length), map(n => text.slice(0, n)));
+        this.output = timer(this.delay, this.speed).pipe(filter(n => n <= (text.length || 0)), map(n => text.slice(0, n)));
     }
 
     output: Observable<string>;
