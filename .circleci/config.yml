@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: Build
-          command: yarn build -c ${CIRCLE_BRANCH}
+          command: yarn build
 
       - persist_to_workspace:
           root: ./
@@ -38,7 +38,7 @@ jobs:
 
   deploy:
     docker:
-      - image: google/cloud-sdk:latest
+      - image: circleci/node:10.4-browsers
 
     working_directory: ~/repo
 
@@ -49,14 +49,8 @@ jobs:
           at: ./
 
       - run:
-          name: Authenticate GCP
-          command: |
-            echo $GCLOUD_SERVICE_KEY > key.json
-            gcloud auth activate-service-account --key-file key.json
-
-      - run:
           name: Deploy
-          command: gsutil cp -r dist/ZaksCode/* gs://www.zakscode.com
+          command: yarn firebase deploy --token "${FIREBASE_TOKEN}"
 
 workflows:
   version: 2
