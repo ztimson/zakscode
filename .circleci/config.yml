@@ -50,7 +50,9 @@ jobs:
 
       - run:
           name: Deploy
-          command: yarn firebase deploy --token "${FIREBASE_TOKEN}"
+          command: |
+            yarn global add firebase-tools
+            yarn firebase deploy --token "${FIREBASE_TOKEN}"
 
 workflows:
   version: 2
