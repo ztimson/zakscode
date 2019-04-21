@@ -1,7 +1,7 @@
 <div class="w-100">
     <div class="container d-flex align-items-center" style="height: 600px">
         <div class="w-100 text-center">
-            <typewriter [text]="quote"></typewriter>
+            <typewriter [text]="quote | async"></typewriter>
         </div>
     </div>
     <div class="container mb-md-5 p-0 bg-white">
