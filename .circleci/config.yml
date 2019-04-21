@@ -31,6 +31,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
+            - node_modules
             - dist/ZaksCode
 
       - store_artifacts:
@@ -50,9 +51,7 @@ jobs:
 
       - run:
           name: Deploy
-          command: |
-            yarn global add firebase-tools
-            yarn firebase deploy --token "${FIREBASE_TOKEN}"
+          command: yarn firebase deploy --token "${FIREBASE_TOKEN}"
 
 workflows:
   version: 2
