@@ -1,0 +1,8 @@
+<div clas="p-1" style="background-color: #353535; color: #fff;">
+    <div class="pl-2 pt-2" style="height: 10rem;">
+        <h4 *ngFor="let o of output">{{o}}</h4>
+    </div>
+    <div class="pl-2 pb-2">
+        <h4 class="d-inline mr-2" style="color: #22ff22">></h4><typewriter [text]="input" (done)="enter()"></typewriter>
+    </div>
+</div>

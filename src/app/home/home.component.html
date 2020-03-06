@@ -1,11 +1,7 @@
 <div class="w-100">
-    <div class="container d-flex align-items-center" style="height: 600px">
-        <div class="w-100 text-center">
-            <typewriter [text]="quote | async"></typewriter>
-        </div>
-    </div>
-    <div class="container mb-md-5 p-0 bg-white">
-        <div class="px-4" style="background-color: #1c7fc1">
+    <div class="w-100" style="height: calc(100vh - 140px)"></div>
+    <div class="container p-0 bg-white">
+        <div class="px-4" style="background-color: #732222">
             <mat-card style="max-width: 600px; transform: translateY(-33%)">
                 <mat-card-content class="d-flex p-3">
                     <div class="d-none d-md-block pr-3">
@@ -23,44 +19,49 @@
                     </div>
                 </mat-card-content>
             </mat-card>
-        </div><div class="p-4">
-            <h3>Disclaimer</h3>
-            This site is currently under complete renovations as it moves from Django to Angular + Firebase
         </div>
         <div class="p-4">
-            <h3>About Zak</h3>
-            Zak was born with a keyboard in hand and was learning his first programming language by thirteen. Nearly
-            entirely self taught, Zak challenged his programming courses through both highschool and college while
-            working in the industry to gain professional experience. He is very passionate about technology and as a
-            lifelong learner it has opened the door to many other hobbies like robotics, space and physics. Some of his
-            personal projects include a full sized arcade machine, home automation and a power wall for a home solar
-            system.
+            <console></console>
         </div>
-        <div class="p-4 text-white" style="background-color: #1c7fc1">
+        <div class="p-4">
+            <h3>About Me</h3>
+            <div class="d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <p>
+                        Zak was born with a keyboard in hand and was learning his first programming language by thirteen. Nearly
+                        entirely self taught, Zak challenged his programming courses through both highschool and college while
+                        working in the industry to gain professional experience. He is very passionate about technology and as a
+                        lifelong learner it has opened the door to many other hobbies like robotics, space and physics. Some of his
+                        personal projects include a full sized arcade machine, home automation and a power wall for a home solar
+                        system.
+                    </p>
+                </div>
+                <div class="flex-shrink-1 p-3">
+                    <img src="assets/img/keyboard-in-hand.jpg" height="150px" width="auto" style="border-radius: 50%">
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="p-4 text-white" style="background-color: #1c7fc1">
             <h3>Projects</h3>
             <div style="height: 400px">
                 <slideshow></slideshow>
             </div>
-        </div>
+        </div> -->
         <div class="p-4">
-            <h3>Information</h3>
-            <a class="btn btn-primary"
-               href="https://docs.google.com/document/d/1xP6HASPerXKMJM_x6-PhHVvoYgq-Hym5IRO7g47EX8o/edit?usp=sharing"
-               target="_blank">Resume</a>
-            <h5>References</h5>
-            <a href="https://drive.google.com/file/d/0B_iz0vkzXmAyNWw0UDFzT0ZTeVU/view?usp=sharing" target="_blank">Manager</a>
-            <br>
-            <a href="https://drive.google.com/file/d/0B_iz0vkzXmAyaFBhcXBEaGp6YWc/view?usp=sharing" target="_blank">Contractor</a>
-            <br>
-            <a href="https://drive.google.com/file/d/0B_iz0vkzXmAyM0YtTWcxQzk0dEE/view?usp=sharing" target="_blank">Teacher</a>
-            <br>
-            <a href="https://drive.google.com/file/d/0B_iz0vkzXmAyX2owd0xURjh3RlE/view?usp=sharing" target="_blank">Principle</a>
-            <br>
-            <a href="https://drive.google.com/file/d/0B_iz0vkzXmAyMHdaM1BjZ1MwbWxva2lOY290NElwanN4b2JV/view?usp=sharing"
-               target="_blank">CD Project Red</a>
+            <h3>Resume & References</h3>
+            <a class="btn btn-outline-primary" href="https://docs.google.com/document/d/1xP6HASPerXKMJM_x6-PhHVvoYgq-Hym5IRO7g47EX8o/edit?usp=sharing" target="_blank">Resume</a>
+            <div class="ml-3 btn-group" role="group" aria-label="Basic example">
+                <a class="btn btn-outline-info" href="https://drive.google.com/file/d/0B_iz0vkzXmAyNWw0UDFzT0ZTeVU/view?usp=sharing" target="_blank">Manager</a>
+                <a class="btn btn-outline-info" href="https://drive.google.com/file/d/0B_iz0vkzXmAyaFBhcXBEaGp6YWc/view?usp=sharing" target="_blank">Contractor</a>
+                <a class="btn btn-outline-info" href="https://drive.google.com/file/d/0B_iz0vkzXmAyM0YtTWcxQzk0dEE/view?usp=sharing" target="_blank">Teacher</a>
+                <a class="btn btn-outline-info" href="https://drive.google.com/file/d/0B_iz0vkzXmAyX2owd0xURjh3RlE/view?usp=sharing" target="_blank">Principle</a>
+                <a class="btn btn-outline-info" href="https://drive.google.com/file/d/0B_iz0vkzXmAyMHdaM1BjZ1MwbWxva2lOY290NElwanN4b2JV/view?usp=sharing" target="_blank">CD Project Red</a>
+            </div>
         </div>
         <footer class="p-1 bg-dark text-center" style="color: grey">
             Copyright © Zakary Timson 2019 | All Rights Reserved
         </footer>
+        <div class="skirt"></div>
     </div>
 </div>

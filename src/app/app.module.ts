@@ -14,11 +14,13 @@ import {AppComponent} from './app.component';
 import {AppRouting} from './app.routing';
 import {AdminComponent} from './admin/admin.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {ConsoleComponent} from './components/console/console.component';
 
 @NgModule({
     declarations: [
         AdminComponent,
         AppComponent,
+        ConsoleComponent,
         HomeComponent,
         SlideShowComponent,
         TypewriterComponent

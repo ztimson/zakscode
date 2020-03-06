@@ -1,5 +1,21 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Roboto:300,400,500");
+
+::-webkit-scrollbar-track {
+	background-color: #354B72;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: #354B72;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+	background-color: #354B72;
+}
 
 html, body {
   height: 100%;
@@ -8,5 +24,11 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
-  background: #ffffff url("/assets/img/background.jpg") no-repeat fixed center;
+  background: #354B72 url("/assets/img/ZaksCode.gif") no-repeat fixed center;
+}
+
+.skirt {
+  height: 3rem;
+  width: 100%;
+  background-color: #354B72;
 }
