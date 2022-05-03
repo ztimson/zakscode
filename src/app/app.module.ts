@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {ContactFormComponent} from './components/contact-form/contact-form.component';
 import {HomeComponent} from './views/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
@@ -14,6 +15,7 @@ import {ConsoleComponent} from './components/console/console.component';
     declarations: [
         AppComponent,
         ConsoleComponent,
+		ContactFormComponent,
         HomeComponent,
         SlideShowComponent,
         TypewriterComponent

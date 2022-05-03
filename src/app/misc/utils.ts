@@ -1,4 +1,16 @@
 /**
+ * Convert data into a form encoded format.
+ *
+ * @param {any} data - data to convert
+ * @returns {string} - Ecodeded form data
+ */
+export function formEncode(data: any): string {
+	return Object.entries(data).map(([key, value]) =>
+		encodeURIComponent(key) + '=' + encodeURIComponent(<any>value)
+	).join('&');
+}
+
+/**
  * Use with await to pause the script for a specified amount of time (in miliseconds).
  *
  * **Example:**
