@@ -40,9 +40,11 @@ audit:
         - node_modules
       policy: pull
   script:
-    - echo "vulnerabilities_high $(npm audit | grep -oE '[0-9]+ high' | grep -oE '[0-9]+' || echo 0)" > metrics.txt
-    - echo "vulnerabilities_medium $(npm audit | grep -oE '[0-9]+ moderate' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
-    - echo "vulnerabilities_low $(npm audit | grep -oE '[0-9]+ low' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+    - AUDIT=$(npm audit)
+    - echo "vulnerabilities_high $(echo $AUDIT | grep -oE '[0-9]+ high' | grep -oE '[0-9]+' || echo 0)" > metrics.txt
+    - echo "vulnerabilities_medium $(echo $AUDIT | grep -oE '[0-9]+ moderate' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+    - echo "vulnerabilities_low $(echo $AUDIT | grep -oE '[0-9]+ low' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+    - echo "$AUDIT"
   artifacts:
     reports:
       metrics: metrics.txt
@@ -80,6 +82,7 @@ tag:
     - git push -f origin $VERSION
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  allow_failure: true
 
 production:
   stage: deploy
