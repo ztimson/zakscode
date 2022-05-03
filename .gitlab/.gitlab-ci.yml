@@ -73,7 +73,7 @@ tag:
     entrypoint: [ "" ]
   cache: [ ]
   before_script:
-    - git remote set-url origin "http://gitlab-ci-token:$DEPLOY_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git"
+    - git remote set-url origin http://gitlab-ci-token:$DEPLOY_TOKEN@gitlab.psdcitywide.com/$CI_PROJECT_PATH.git
   script:
     - VERSION=$(cat package.json | grep version | grep -Eo ':.+' | grep -Eo '[[:alnum:]\.\/\-]+')
     - git tag -f $VERSION $CI_COMMIT_SHA
@@ -91,4 +91,4 @@ production:
     name: Production
     url: https://zakscode.com
   rules:
-    - if: '$CI_COMMIT_BRANCH == "production" && $CI_DEPLOY_FREEZE == null'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_DEPLOY_FREEZE == null'
