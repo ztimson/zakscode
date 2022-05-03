@@ -4,8 +4,8 @@ import {QuoteService} from '../../services/quote.service';
 import {sleep} from '../../misc/utils';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html'
+	selector: 'home',
+	templateUrl: './home.component.html'
 })
 export class HomeComponent implements AfterViewInit {
 	@ViewChild(ConsoleComponent) console!: ConsoleComponent;
@@ -16,12 +16,10 @@ export class HomeComponent implements AfterViewInit {
 
 	animateConsole() {
 		setTimeout(async () => {
-			this.console.exec('bash ./random-thought.sh', () => this.quotes.random());
+			await this.console.exec('bash ./random-thought.sh', () => this.quotes.random());
 			await sleep(10000);
-			this.console.exec('clear', async () => {
-				this.console.clear();
-				this.animateConsole();
-			});
+			await this.console.exec('clear', async () => this.console.clear());
+			this.animateConsole();
 		}, 1000);
 	}
 }
