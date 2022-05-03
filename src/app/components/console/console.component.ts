@@ -1,32 +1,35 @@
-import {Component} from '@angular/core';
-import {AppStore} from '../../app.store';
-import {map} from 'rxjs/operators';
+import {Component, Input, ViewChild} from '@angular/core';
+import { take } from 'rxjs';
+import {TypewriterComponent} from '../typewriter/typewriter.component';
+
+export type ConsoleConfig = {
+	input: string,
+	output: () => string
+}
 
 @Component({
     selector: 'console',
-    templateUrl: './console.component.html'
+    templateUrl: './console.component.html',
+	styleUrls: ['./console.component.scss']
 })
 export class ConsoleComponent {
-    private done = false;
+    input = '';
+	output: string[] = [];
+	prompt = '>'
 
-    input = './motd.sh';
-    output = [];
-    quote;
+	done = () => {};
 
-    constructor(private store: AppStore) {
-        store.quotes.subscribe(quotes => {
-            const quote = quotes[Math.floor(Math.random() * quotes.length)];
-            this.quote = quote.text;
-        });
-    }
+	@Input() height: string = 'auto';
 
-    enter() {
-        if(this.done) return;
-        setTimeout(() =>  {
-            this.output.push(this.input);
-            this.input = '';
-            setTimeout(() => this.output.push(this.quote), 500);
-        }, 1500);
-        this.done = true;
-    }
+	@ViewChild(TypewriterComponent) typewriter!: TypewriterComponent;
+
+	exec(input: string, output: () => string) {
+		this.done = () => {
+			this.output.push(`${this.prompt} ${input}`);
+			console.log(output());
+			this.output.push(output());
+			this.input = '';
+		};
+		this.input = input;
+	}
 }

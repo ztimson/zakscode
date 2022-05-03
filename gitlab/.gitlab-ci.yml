@@ -1,0 +1,108 @@
+image: node:16
+
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+npm:
+  stage: build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
+  cache:
+    - key:
+        files:
+          - package.json
+      paths:
+        - node_modules
+        - package-lock.json
+      policy: pull-push
+    - key: $CI_PIPELINE_ID
+      paths:
+        - dist
+      policy: push
+  script:
+    - npm i
+    - npm run build:prod
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+audit:
+  stage: test
+  cache:
+    - key:
+        files:
+          - package.json
+      paths:
+        - node_modules
+      policy: pull
+  script:
+    - echo "vulnerabilities_high $(npm audit | grep -oE '[0-9]+ high' | grep -oE '[0-9]+' || echo 0)" > metrics.txt
+    - echo "vulnerabilities_medium $(npm audit | grep -oE '[0-9]+ moderate' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+    - echo "vulnerabilities_low $(npm audit | grep -oE '[0-9]+ low' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+  artifacts:
+    reports:
+      metrics: metrics.txt
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+eslint:
+  stage: test
+  cache:
+    - key:
+        files:
+          - package.json
+      paths:
+        - node_modules
+      policy: pull
+  script:
+    - npm run lint
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+registry:
+  stage: publish
+  image: docker
+  cache:
+    - key: $CI_PIPELINE_ID
+      paths:
+        - dist
+      policy: pull
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - TAG=$(echo "$CI_COMMIT_BRANCH" | sed -E "s/[_/]/-/g")
+    - docker build --no-cache -t "$CI_REGISTRY_IMAGE:$TAG" .
+    - docker push "$CI_REGISTRY_IMAGE:$TAG"
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+tag:
+  stage: publish
+  image:
+    name: alpine/git
+    entrypoint: [ "" ]
+  cache: [ ]
+  before_script:
+    - git remote set-url origin "http://gitlab-ci-token:$DEPLOY_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git"
+  script:
+    - VERSION=$(cat package.json | grep version | grep -Eo ':.+' | grep -Eo '[[:alnum:]\.\/\-]+')
+    - git tag -f $VERSION $CI_COMMIT_SHA
+    - git push -f origin $VERSION
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+production:
+  stage: deploy
+  image: node:16
+  cache: [ ]
+  script:
+    - echo "Make curl request to portainer"
+  environment:
+    name: Production
+    url: https://zakscode.com
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "production" && $CI_DEPLOY_FREEZE == null'
