@@ -19,7 +19,7 @@ RUN if [ ! -d "dist" ]; then npm run build; fi
 
 # Use Nginx to serve
 FROM nginx:1.20-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/zakscode /usr/share/nginx/html
 COPY docker/robots.txt /usr/share/nginx/html/robots.txt
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80

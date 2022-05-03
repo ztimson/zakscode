@@ -86,7 +86,7 @@ production:
   image: node:16
   cache: [ ]
   script:
-    - echo "Make curl request to portainer"
+    - curl -X POST https://portainer.zakscode.com/api/webhooks/9fcc5dce-a884-4063-8666-34c0acf0aec5
   environment:
     name: Production
     url: https://zakscode.com
