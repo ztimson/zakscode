@@ -12,7 +12,7 @@ export class QuoteService {
 		'The number of people older than you never goes up',
 		'When you brush your teeth you are cleaning your skeleton',
 		'Pregenancy is like a group project where one person get\'s stuck with all the work',
-		'If the universe wasn\'t inifinate it would be even scarier',
+		'If the universe wasn\'t infinite it would be even scarier',
 		'Either we are alone in the universe or we are not. both are terrifying'
 	];
 
