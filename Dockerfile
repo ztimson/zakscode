@@ -14,8 +14,8 @@ WORKDIR /app
 COPY . .
 
 # Install & build
-RUN if [ ! -d "dist" ] && [ ! -d "node_modules" ]; then npm install; fi \
-    if [ ! -d "dist" ]; then npm run build; fi
+RUN if [ ! -d "dist" ] && [ ! -d "node_modules" ]; then npm install; fi
+RUN if [ ! -d "dist" ]; then npm run build; fi
 
 # Use Nginx to serve
 FROM nginx:1.20-alpine
