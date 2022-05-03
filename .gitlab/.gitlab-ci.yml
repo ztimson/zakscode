@@ -49,20 +49,6 @@ audit:
   rules:
     - if: $CI_COMMIT_BRANCH
 
-eslint:
-  stage: test
-  cache:
-    - key:
-        files:
-          - package.json
-      paths:
-        - node_modules
-      policy: pull
-  script:
-    - npm run lint
-  rules:
-    - if: $CI_COMMIT_BRANCH
-
 registry:
   stage: publish
   image: docker
