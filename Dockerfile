@@ -13,11 +13,9 @@ RUN npm config set unsafe-perm true && \
 WORKDIR /app
 COPY . .
 
-# Install
-RUN if [ ! -d "dist" ] && [ ! -d "node_modules" ]; then npm install; fi
-
-# Build
-if [ ! -d "dist" ]; then npm run build; fi
+# Install & build
+RUN if [ ! -d "dist" ] && [ ! -d "node_modules" ]; then npm install; fi \
+    if [ ! -d "dist" ]; then npm run build; fi
 
 # Use Nginx to serve
 FROM nginx:1.20-alpine
