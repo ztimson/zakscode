@@ -1,11 +1,6 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import { take } from 'rxjs';
+import {sleep} from '../../misc/utils';
 import {TypewriterComponent} from '../typewriter/typewriter.component';
-
-export type ConsoleConfig = {
-	input: string,
-	output: () => string
-}
 
 @Component({
     selector: 'console',
@@ -13,22 +8,24 @@ export type ConsoleConfig = {
 	styleUrls: ['./console.component.scss']
 })
 export class ConsoleComponent {
+	done = () => {};
     input = '';
 	output: string[] = [];
 	prompt = '>'
-
-	done = () => {};
 
 	@Input() height: string = 'auto';
 
 	@ViewChild(TypewriterComponent) typewriter!: TypewriterComponent;
 
-	exec(input: string, output: () => string) {
-		this.done = () => {
-			this.output.push(`${this.prompt} ${input}`);
-			console.log(output());
-			this.output.push(output());
+	clear() { this.output = []; }
+
+	exec(input: string, output: () => any, pause = 1000) {
+		this.done = async () => {
+			await sleep(pause);
 			this.input = '';
+			this.output.push(`${this.prompt} ${input}`);
+			const out = output();
+			if(typeof out == 'string') this.output.push(out);
 		};
 		this.input = input;
 	}
