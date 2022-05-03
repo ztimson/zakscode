@@ -1,4 +1,6 @@
 <form>
+	<div *ngIf="success" class="alert alert-success">Email sent!</div>
+	<div *ngIf="error" class="alert alert-danger">Email failed to send</div>
 	<div class="form-group">
 		<label for="emailInput">Email</label>
 		<input type="email" class="form-control" id="emailInput" name="email" placeholder="username@example.com" [(ngModel)]="email">

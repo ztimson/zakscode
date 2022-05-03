@@ -16,6 +16,11 @@ export class QuoteService {
 		'Either we are alone in the universe or we are not. both are terrifying'
 	];
 
+	/**
+	 * Return random quote
+	 *
+	 * @returns {string} - Quote
+	 */
 	random() {
 		return this.quotes[Math.round(Math.random() * this.quotes.length)];
 	}
