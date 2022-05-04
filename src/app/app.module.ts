@@ -2,6 +2,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ContactFormComponent} from './components/contact-form/contact-form.component';
+import {ProjectsComponent} from './components/projects/projects.component';
 import {HomeComponent} from './views/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
@@ -18,6 +19,7 @@ import {ConsoleComponent} from './components/console/console.component';
         ConsoleComponent,
 		ContactFormComponent,
         HomeComponent,
+		ProjectsComponent,
         SlideShowComponent,
         TypewriterComponent
     ],

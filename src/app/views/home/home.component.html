@@ -64,17 +64,7 @@
 		</div>
 		<div class="p-4">
 			<h3>Projects & Repositories</h3>
-			<mat-list dense>
-				<ng-container *ngFor="let p of projectsService.all; let first = first">
-					<mat-divider *ngIf="!first"></mat-divider>
-					<mat-list-item>
-						<img *ngIf="p.avatar_url" mat-list-avatar [src]="p.avatar_url">
-						<img *ngIf="!p.avatar_url" mat-list-avatar src="/assets/img/git.png">
-						<a mat-line [href]="p.web_url" target="_blank">{{p.name}}</a>
-						<div mat-line>{{p.description}}</div>
-					</mat-list-item>
-				</ng-container>
-			</mat-list>
+			<projects></projects>
 		</div>
 		<div class="p-4 overflow-hidden">
 			<h3>Contact</h3>

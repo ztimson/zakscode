@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {ConsoleComponent} from '../../components/console/console.component';
-import {ProjectsService} from '../../services/projects.service';
 import {QuoteService} from '../../services/quote.service';
 import {sleep} from '../../misc/utils';
 
@@ -11,7 +10,7 @@ import {sleep} from '../../misc/utils';
 export class HomeComponent implements AfterViewInit {
 	@ViewChild(ConsoleComponent) console!: ConsoleComponent;
 
-	constructor(public projectsService: ProjectsService, private quotes: QuoteService) { }
+	constructor(private quotes: QuoteService) { }
 
 	ngAfterViewInit() { this.animateConsole(); }
 
