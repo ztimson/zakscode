@@ -22,6 +22,6 @@ export class QuoteService {
 	 * @returns {string} - Quote
 	 */
 	random() {
-		return this.quotes[Math.round(Math.random() * this.quotes.length)];
+		return this.quotes[Math.round(Math.random() * (this.quotes.length - 1))];
 	}
 }
