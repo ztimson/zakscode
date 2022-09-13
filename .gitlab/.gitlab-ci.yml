@@ -38,6 +38,7 @@ audit:
           - package.json
       paths:
         - node_modules
+        - package-lock.json
       policy: pull
   script:
     - AUDIT=$(npm audit)
