@@ -75,7 +75,7 @@ tag:
     entrypoint: [ "" ]
   cache: [ ]
   before_script:
-    - git remote set-url origin http://gitlab-ci-token:$DEPLOY_TOKEN@gitlab.psdcitywide.com/$CI_PROJECT_PATH.git
+    - git remote set-url origin http://gitlab-ci-token:$DEPLOY_TOKEN@gitlab.zakscode.com/$CI_PROJECT_PATH.git
   script:
     - VERSION=$(cat package.json | grep version | grep -Eo ':.+' | grep -Eo '[[:alnum:]\.\/\-]+')
     - git tag -f $VERSION $CI_COMMIT_SHA
