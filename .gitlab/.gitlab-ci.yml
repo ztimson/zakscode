@@ -69,7 +69,7 @@ tag:
     entrypoint: [ "" ]
   cache: [ ]
   before_script:
-    - git remote set-url origin "https://Tagger:$DEPLOY_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git"
+    - git remote set-url origin "https://ReleaseBot:$DEPLOY_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git"
   script:
     - VERSION=$(cat package.json | grep version | grep -Eo ':.+' | grep -Eo '[[:alnum:]\.\/\-]+')
     - git tag -f $VERSION $CI_COMMIT_SHA
