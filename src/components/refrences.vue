@@ -4,11 +4,11 @@ const resume = 'https://drive.google.com/file/d/1N1L2SYvqY49OJAR97cjjHANj0ModmZS
 
 const refrences = [
 	// ['Andre Mourinho', ''],
-	['CD Projekt Red', 'https://files.zakscode.com/share/N61Db3y0'],
-	['Chris Cartwright', 'https://files.zakscode.com/share/luyY49_N'],
-	['Garry Whyte', 'https://files.zakscode.com/share/zHjnHReT'],
-	['Linda Nicodemo', 'https://files.zakscode.com/share/1wKpkQzW'],
-	['Ray Power', 'https://files.zakscode.com/share/bTR2ab_P'],
+	['CD Projekt Red', 'https://drive.google.com/file/d/1QT02DBRFg4HcJXoxuH0WfiozjYHoJWrn/view?usp=drive_link'],
+	['Chris Cartwright', 'https://drive.google.com/file/d/17JtSlVvMt_84XG0iQO8cHlDsi30oR34c/view?usp=drive_link'],
+	['Garry Whyte', 'https://drive.google.com/file/d/18Mqv1vX2wmseQkqEPRIZiuSuGhDri-dB/view?usp=drive_link'],
+	['Linda Nicodemo', 'https://drive.google.com/file/d/1c4rB1oSWW4OoaURHkSeCHpOEkdBdQ_fH/view?usp=drive_link'],
+	['Ray Power', 'https://drive.google.com/file/d/1aP8Xpg3hlP0yQV8_sg9yeTgsrTRCcJZH/view?usp=drive_link'],
 ]
 </script>
 
