@@ -5,7 +5,7 @@ const resume = 'https://drive.google.com/file/d/1km4XqtXrYtoUnrDpEtDmAeKWh1qyp9n
 const refrences = [
 	// ['Andre Mourinho', ''],
 	['CD Projekt Red', 'https://drive.google.com/file/d/1QT02DBRFg4HcJXoxuH0WfiozjYHoJWrn/view?usp=drive_link'],
-	['Chris Cartwright', 'https://drive.google.com/file/d/1UNRvaMz4nuqg6n46y74NpeVMeR95tiHw/view?usp=drive_link'],
+	['Chris Cartwright', 'https://drive.google.com/file/d/17JtSlVvMt_84XG0iQO8cHlDsi30oR34c/view?usp=drive_link'],
 	['Garry Whyte', 'https://drive.google.com/file/d/18Mqv1vX2wmseQkqEPRIZiuSuGhDri-dB/view?usp=drive_link'],
 	['Linda Nicodemo', 'https://drive.google.com/file/d/1c4rB1oSWW4OoaURHkSeCHpOEkdBdQ_fH/view?usp=drive_link'],
 	['Ray Power', 'https://drive.google.com/file/d/1aP8Xpg3hlP0yQV8_sg9yeTgsrTRCcJZH/view?usp=drive_link'],
