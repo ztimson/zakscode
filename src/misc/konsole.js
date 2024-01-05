@@ -187,7 +187,7 @@ window.cli.exec['clear'] = {
 		return 'Clear console output';
 	},
 	run: args => {
-		window.cli._output.innerHTML = '';
+		setTimeout(() => window.cli._output.innerHTML = '', 1);
 	}
 }
 window.cli.exec['date'] = {
