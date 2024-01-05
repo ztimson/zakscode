@@ -36,7 +36,6 @@ window.cli = {
 		window.cli._input.addEventListener('keyup', (e) => {
 			if(e.key == "Enter") {
 				window.cli.disable();
-				window.cli.stdOut(`${window.cli.prompt()} ${window.cli._input.value}`);
 				if(!!window.cli._input.value) {
 					window.cli._history.push(window.cli._input.value);
 					window.cli._index = window.cli._history.length;
@@ -108,22 +107,22 @@ window.cli = {
 		p.innerText = text;
 		window.cli._output.appendChild(p);
 	},
-	stdIn:(command) => {
+	stdIn:(command, silent=false) => {
 		(Array.isArray(command) ? command.join(' ') : command).split(';').filter(c => !!c).forEach(c => {
 			const parts = c.match(/(?:[^\s"]+|"[^"]*")+/g);
 			if(!parts) return;
 
 			const exec = window.cli.exec[parts[0]];
 			if(!exec?.run) {
-				window.cli.stdErr(`${parts[0]}: command not found`);
+				window.cli.stdErr(`${window.cli.prompt()} ${command}\n${parts[0]}: command not found`);
 			} else {
 				try {
 					const args = parts.slice(1).map(a => (a[0] == '"' || a[0] == "'") ? a.slice(1, -1) : a);
 					const out = exec.run(args);
-					if(!!out) window.cli.stdOut(out);
+					if(!!out && !silent) window.cli.stdOut(`${window.cli.prompt()} ${command}\n${out}`);
 				} catch(err) {
 					console.error(err);
-					window.cli.stdErr(err.message || `${parts[0]}: exited with a non-zero status`);
+					window.cli.stdErr(`${window.cli.prompt()} ${command}\n${err.message || `${parts[0]}: exited with a non-zero status`}`);
 				}
 			}
 		});
@@ -134,6 +133,24 @@ window.cli = {
 		p[html ? 'innerHTML' : 'innerText'] = text;
 		window.cli._output.appendChild(p);
 	},
+	type: (text, speed=150) => {
+		let counter = 0;
+		return new Promise(res => {
+			let typing = setInterval(() => {
+				if(counter < text.length) {
+					window.cli._input.value += text[counter];
+				} else {
+					clearInterval(typing);
+					setTimeout(() => {
+						window.cli.stdIn(text);
+						window.cli._input.value = '';
+						res();
+					}, 750);
+				}
+				counter++;
+			}, speed);
+		});
+	}
 };
 
 window.cli.exec['banner'] = {
@@ -173,6 +190,17 @@ window.cli.exec['clear'] = {
 		window.cli._output.innerHTML = '';
 	}
 }
+window.cli.exec['date'] = {
+	autocomplete: () => {
+		return [];
+	},
+	help: () => {
+		return 'Get current date & time';
+	},
+	run: args => {
+		return (new Date()).toLocaleString();
+	}
+}
 window.cli.exec['echo'] = {
 	autocomplete: () => {
 		return [];
@@ -207,7 +235,7 @@ window.cli.exec['help'] = {
 	},
 	run: args => {
 		return `Konsole v${window.cli.version} - A prototype bash emulator written by Zakary Timson\n\n` +
-			Object.keys(window.cli.exec).map(command => `${command} - ${window.cli.exec[command].help()}`).join('\n') + '\n\n';
+			Object.keys(window.cli.exec).map(command => `${command} - ${window.cli.exec[command].help()}`).join('\n');
 	}
 }
 window.cli.exec['hostname'] = {
