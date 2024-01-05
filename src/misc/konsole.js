@@ -89,16 +89,17 @@ window.cli = {
 	},
 	prompt: () => `${window.cli.user}@${window.cli.hostname}:${window.cli.pwd}${window.cli.user == 'root' ? '#' : '$'}`,
 	fs: (path, set) => {
-		let target = window.cli.filesystem;
-		const parts = window.cli.path(path).split('/').filter(p => !!p);
-		parts.forEach((p, i, arr) => {
-			if(!target[p] && set !== undefined) {
-				if(i + 1 != arr.length) target[p] = {};
-				else target[p] = set == null ? undefined : set;
+		return window.cli.path(path).split('/').filter(p => !!p).reduce((t, p,  i, arr) => {
+			if(!t?.hasOwnProperty(p)) {
+				if(set == undefined) return undefined;
+				t[p] = {};
 			}
-			target = target[p];
-		});
-		return target;
+			if(set !== undefined && i == arr.length - 1) {
+				if(set == null) delete t[p];
+				else t[p] = set;
+			}
+			return t[p];
+		}, window.cli.filesystem);
 	},
 	stdErr: (text) => {
 		const p = document.createElement('p');
