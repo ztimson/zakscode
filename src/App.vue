@@ -10,7 +10,7 @@ import Profile from '@/components/profile.vue';
 	<!-- Content -->
 	<div class="cap-width mb-3 bg-white">
 		<!-- Header -->
-		<header class="p-3 mx-auto" style="background: #732222">
+		<header class="px-4 d-flex justify-content-center justify-content-sm-start" style="background: #732222">
 			<profile style="transform: translateY(-33%)" />
 		</header>
 

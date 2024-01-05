@@ -15,8 +15,7 @@ defineProps({
 <template>
 	<div>
 		<div v-for="(p, i) in projects">
-			<hr v-if="i != 0">
-			<div class="d-flex align-items-center">
+			<div class="d-flex align-items-center border p-2" :class="i == 0 ? '' : 'border-top-0'">
 				<div class="me-2">
 					<img :src="p.icon || '/git.png'" alt="Logo" style="height: 40px; width: 40px;">
 				</div>

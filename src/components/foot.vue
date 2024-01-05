@@ -4,7 +4,11 @@
 <style scoped>
 footer {
 	background: #343a40;
-	color: darkgrey;
+	color: #A3A3A3;
+
+	a {
+		color: #75B8FF;
+	}
 }
 </style>
 
