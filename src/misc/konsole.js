@@ -119,7 +119,7 @@ window.cli = {
 				try {
 					const args = parts.slice(1).map(a => (a[0] == '"' || a[0] == "'") ? a.slice(1, -1) : a);
 					const out = exec.run(args);
-					if(!!out && !silent) window.cli.stdOut(`${window.cli.prompt()} ${command}\n${out}`);
+					if(!silent) window.cli.stdOut(`${window.cli.prompt()} ${command}${out ? '\n' + out : ''}`);
 				} catch(err) {
 					console.error(err);
 					window.cli.stdErr(`${window.cli.prompt()} ${command}\n${err.message || `${parts[0]}: exited with a non-zero status`}`);
