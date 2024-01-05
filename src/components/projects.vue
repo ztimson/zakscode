@@ -1,11 +1,5 @@
 <script setup lang="ts">
-export interface Project {
-	icon?: string;
-	name: string;
-	description: string;
-	link: string;
-	source?: string;
-}
+import type {Project} from '@/models/project';
 
 defineProps({
 	projects: {type: Array as () => Project[], required: true}
