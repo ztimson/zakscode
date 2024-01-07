@@ -60,7 +60,7 @@ fetch('https://git.zakscode.com/api/v1/repos/search', {
 			<hr class="mb-4">
 			<img alt="Childhood" src="/childhood.jpg" height="150px" width="auto" class="float-end m-3 m-md-0 ml-md-3" style="border-radius: 50%;">
 			<p>Zak Timson is a software engineer with over 10 years of professional experience. Zak has had a love for computers since he was born & taught himself to code at the age of 13. Since then, he has gone to school for computer science & has worked for both small businesses and large corporations as a developer and team lead.</p>
-			<p>Zak specializes in full-stack web development, DevOps & cloud/server infrastructure, and primarily works on large enterprise grade "Software as a service" (SaaS) products. As a software architect & team lead he is able to work with businesses to create a road map of their needs, build enterprise grade software solutions that meet those needs & work with clients to host & deliver automatic updates at scale using continuous integration.</p>
+			<p>Zak specializes in full-stack web development, DevOps, cloud/server infrastructure, and primarily works on large enterprise grade "Software as a service" (SaaS) products. As a software architect & team lead he is able to work with businesses to create a road map of their needs, build enterprise grade software solutions that meet those needs & work with clients to host & deliver automatic updates at scale using continuous integration.</p>
 
 			<div class="mt-4">
 				<h4 class="mb-3 text-muted">CSV & References</h4>
