@@ -3,6 +3,7 @@ import './konsole.css';
 
 // CLI Commands
 import './commands/banner.js';
+import './commands/cat.js';
 import './commands/cd.js'
 import './commands/clear.js';
 import './commands/date.js';
@@ -15,5 +16,6 @@ import './commands/man.js';
 import './commands/mkdir.js';
 import './commands/pwd.js';
 import './commands/rm.js';
-import './commands/shower-thoughts.js';
+import './commands/shower-thought.js';
+import './commands/touch.js';
 import './commands/whoami.js';

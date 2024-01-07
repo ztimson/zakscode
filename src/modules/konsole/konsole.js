@@ -28,7 +28,7 @@ window.cli = {
                 <div class="cli-stdout"></div>
                 <div class="cli-stdin" onclick="window.cli._input.focus()">
                     <label for="${elementId}-cli-stdin-input" class="cli-stdin-prompt">${window.cli._buildPrompt()}</label>
-                    <input id="${elementId}-cli-stdin-input" class="cli-stdin-input" type="text" />
+                    <input id="${elementId}-cli-stdin-input" class="cli-stdin-input" type="text" autocomplete="off"/>
                 </div>
             </div>`;
 
@@ -119,11 +119,10 @@ window.cli = {
 				try {
 					const args = parts.slice(1).map(a => (a[0] == '"' || a[0] == "'") ? a.slice(1, -1) : a);
 					const out = exec.run(args);
-					if(!suppress) window.cli.stdOut(`${window.cli._buildPrompt()} ${command}${out ? '\n' + out : ''}`);
+					if(!suppress) window.cli.stdOut(`${window.cli._buildPrompt()} ${command}${out != null ? '\n' + (out || '\n') : ''}`);
 				} catch(err) {
 					console.error(err);
 					if(!suppress) {
-						window.cli._output.removeChild(window.cli._output.children[window.cli._output.children.length - 1]);
 						window.cli.stdErr(`${window.cli._buildPrompt()} ${command}\n${err.message || `${parts[0]}: exited with a non-zero status`}`);
 					}
 				}

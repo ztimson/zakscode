@@ -6,7 +6,7 @@ window.cli.exec['rm'] = {
 		return 'Delete file or directory';
 	},
 	run: args => {
-		if(!args[0]) throw new Error('rm: missing operand');
-		window.cli.fs(args[0], null);
+		if(!args.length) throw new Error('rm: missing operand');
+		args.forEach(a => window.cli.fs(a, null));
 	}
 }
