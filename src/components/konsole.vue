@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import '../misc/konsole';
+import '../modules/konsole';
 import {onMounted, ref} from 'vue';
 
 const animate = ref(true);
@@ -27,48 +27,6 @@ onMounted(async () => {
 	}
 });
 </script>
-
-<style>
-.cli-container {
-	padding: 1rem;
-	background: #333;
-	font-family: monospace !important;
-	overflow-y: auto;
-	min-height: 150px;
-	max-height: 300px;
-
-	.cli-stdout {
-		flex-grow: 1;
-		color: #0f0;
-
-		.cli-stdout-line {
-			padding: 0;
-			min-height: 1.25rem;
-		}
-	}
-
-	.cli-stdin {
-		display: flex;
-		margin: 0;
-
-		.cli-stdin-prompt {
-			padding-right: 0.55em;
-			text-wrap: nowrap;
-			color: #0f0;
-		}
-
-		.cli-stdin-input {
-			border: none;
-			outline: none;
-			font-size: 1rem;
-			background-color: rgba(0, 0, 0, 0);
-			color: #0f0;
-			flex-grow: 1;
-			padding: 0;
-		}
-	}
-}
-</style>
 
 <template>
 	<div id="konsole" @click="animate = false"></div>
