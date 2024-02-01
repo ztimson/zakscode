@@ -15,14 +15,14 @@ const refrences = [
 <template>
 	<div class="d-block d-md-none">
 		<div class="mb-3">
-			<a class="btn btn-outline-danger w-100" :href="resume" target="_blank">CSV / Resume</a>
+			<a class="btn btn-outline-danger w-100" :href="resume" target="_blank">Resume</a>
 		</div>
 		<div class="btn-group-vertical w-100" role="group">
 			<a v-for="ref in refrences" class="btn btn-outline-primary" :href="ref[1]" target="_blank">{{ref[0]}}</a>
 		</div>
 	</div>
 	<div class="d-none d-md-flex align-items-start">
-		<a class="btn btn-outline-danger me-3" :href="resume" target="_blank">CSV / Resume</a>
+		<a class="btn btn-outline-danger me-3" :href="resume" target="_blank">Resume</a>
 		<div class="btn-group" role="group">
 			<a v-for="ref in refrences" class="btn btn-outline-primary" :href="ref[1]" target="_blank">{{ref[0]}}</a>
 		</div>
