@@ -9,10 +9,11 @@
 		"src/**/__tests__/*"
 	],
 	"compilerOptions": {
-		"composite": true,
-		"noEmit": true,
-		"moduleResolution": "Node",
 		"baseUrl": ".",
+		"composite": true,
+		"lib": ["DOM", "ESNext"],
+		"moduleResolution": "Node",
+		"noEmit": true,
 		"paths": {
 			"@/*": [
 				"./src/*"
