@@ -7,13 +7,13 @@ export interface Project {
 	source?: string;
 }
 
-export const services: P[] = [
+export const services: Project[] = [
 	{name: 'Phone Reminders (Coming Soon)', icon: 'https://phone-reminders.com/phone-reminders.png', link: 'https://phone-reminders.com', description: 'Automatically call & send SMS reminders to clients for events using Google Calendar'},
 	{name: 'Map Alliance', icon: 'https://maps.zakscode.com/assets/images/logo.png', link: 'https://maps.zakscode.com', description: 'An online GIS tool which enables users to view, edit & share various "marked-up" maps'},
 	{name: 'Formula Manager', icon: 'https://git.zakscode.com/avatars/7ec6bfd66b2bf9bad5c43c75a33f9cb3f6609b05c33a31f5d1e524a567cd09c1?size=280', link: 'https://screenprintingsuppliescanada.com/formulation-manager', description: 'A web & computer application used by FH&Sons to record chemical formulas & distribute them to clients'},
 ];
 
-export const openSource: P[] = [
+export const openSource: Project[] = [
 	{name: 'Momentum', icon: 'https://git.zakscode.com/ztimson/momentum/raw/branch/develop/public/favicon.svg', invertIcon: true, link: 'https://git.zakscode.com/ztimson/momentum', source: 'https://git.zakscode.com/ztimson/momentum', description: 'Server Development Platform'},
 	{name: 'Transmute (Coming Soon)', icon: 'https://git.zakscode.com/repo-avatars/b497daaf22a214fe6d6cc35b8ec217cd22401b668dff93dcfcc7557bd8a46d96', link: 'https://git.zakscode.com/ztimson/transmute', source: 'https://git.zakscode.com/ztimson/transmute', description: 'Distributed video conversion tool with built in WebUI'},
 	{name: 'ZaksCode', icon: 'https://git.zakscode.com/repo-avatars/590279cb4b176c6a7924364c7b0ef78afa80696703abe5bef8d9ce7e12477f3d', link: 'https://zakscode.com', source: 'https://git.zakscode.com/ztimson/zakscode', description: 'Source code for this website, ZaksCode.com'},
