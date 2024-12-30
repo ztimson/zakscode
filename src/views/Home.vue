@@ -4,17 +4,23 @@ import Contact from '@/components/contact.vue';
 import Konsole from '@/components/konsole.vue';
 import Projects from '@/components/projects.vue';
 import Refrences from '@/components/refrences.vue';
-import {services, openSource} from '@/models/project';
+import {momentum} from '@/services/momentum.service';
 import {ref} from 'vue';
+
+// Get favorites
+const products = ref<any[]>([]);
+const openSource = ref<any[]>([]);
+momentum.data.read('Repos').then(resp =>
+	resp.forEach((r: any) => (r.product ? products : openSource).value.push(r)));
 
 // Get repository count
 let remainder = ref(0);
-fetch('https://git.zakscode.com/api/v1/repos/search', {
+fetch('https://git.zakscode.com/api/v1/repos/search?limit=1000', {
 	method: 'get',
 	headers: {"Content-Type": "application/json"}
-}).then(async (repos: any) => {
-	const data = (await repos.json())?.data;
-	remainder.value = data.length - openSource.length;
+}).then(async (resp: any) => {
+	const data = (await resp.json())?.data;
+	remainder.value = data.length - openSource.value.length;
 });
 </script>
 
@@ -58,7 +64,7 @@ fetch('https://git.zakscode.com/api/v1/repos/search', {
 			<hr class="mb-4">
 			<div class="mb-4">
 				<h4 class="mb-3 text-muted">Products & Services</h4>
-				<projects :projects="services"/>
+				<projects :projects="products"/>
 			</div>
 			<div>
 				<h4 class="mb-3 text-muted">Open Source</h4>

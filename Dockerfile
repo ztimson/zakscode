@@ -16,16 +16,6 @@ COPY . .
 RUN if [ ! -d "dist" ]; then npm install && npm run build; fi
 
 # Use Nginx to serve
-FROM nginx:1.23-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copy aditional files
-COPY package.json /usr/share/nginx/html
-COPY docker/robots.txt /usr/share/nginx/html/robots.txt
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-
-# Setup environment varible script
-COPY docker/setup-environment.sh /docker-entrypoint.d/setup-environment.sh
-RUN chmod +x /docker-entrypoint.d/setup-environment.sh
-
-EXPOSE 80
+FROM git.zakscode.com/ztimson/momentum:latest
+RUN rm -rf /app/server/public/assets /app/server/public/index.html
+COPY --from=build /app/dist /app/server/public

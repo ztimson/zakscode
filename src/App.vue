@@ -24,5 +24,5 @@ import Profile from '@/components/profile.vue';
 	</div>
 
 	<!-- Spacer -->
-	<div class="d-none d-sm-block w-100" style="height: 40px"></div>
+	<div class="d-none d-lg-block w-100" style="height: 40px"></div>
 </template>

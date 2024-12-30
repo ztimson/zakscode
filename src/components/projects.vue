@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type {Project} from '@/models/project';
 
 defineProps({
-	projects: {type: Array as () => Project[], required: true}
+	projects: {type: Array as () => any[], required: true}
 });
 </script>
 

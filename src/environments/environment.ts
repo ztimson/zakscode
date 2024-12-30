@@ -1,3 +1,6 @@
+const devMode = location?.port == '5173';
+
 export const environment = {
-	postMailKey: (<any>window)?.env?.APP_POSTMAIL_KEY || (<any>import.meta).env.APP_POSTMAIL_ACCESS_TOKEN,
+	apiUrl: devMode ? 'http://localhost' : location.host,
+	devMode
 }

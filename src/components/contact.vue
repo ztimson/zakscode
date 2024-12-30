@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Icon from '@/components/icon.vue';
-import {environment} from '@/environments/environment';
+import {momentum} from '@/services/momentum.service';
 import {ref} from 'vue';
 
 const disable = ref(false);
@@ -31,23 +31,10 @@ function validateEmail(email: string) {
 }
 
 function send(name: string, email: string, subject: string, message: string) {
-	function formEncode(data: any): string {
-		return Object.entries(data).map(([key, value]) =>
-			encodeURIComponent(key) + '=' + encodeURIComponent(<any>value)
-		).join('&');
-	}
-
-	return fetch('https://postmail.invotes.com/send', {
-		method: 'post',
-		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-		body: formEncode({
-			access_token: environment.postMailKey,
-			subject: `ZaksCode: ${subject}`,
-			text: `App: ZaksCode\nFrom: ${name} <${email}>\nSubject: ${subject}\n\nMessage:\n${message}`
-		})
-	}).then(async resp => {
-		if(!resp.ok) throw new Error(resp.statusText);
-		return await resp.text();
+	return momentum.email.send({
+		to: ['zaktimson@gmail.com', email],
+		subject: `ZaksCode: ${subject}`,
+		body: {template: 'email', data: {body: `From: ${name} &lt;${email}&gt;<br><br>${message}`}}
 	});
 }
 
