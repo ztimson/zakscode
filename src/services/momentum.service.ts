@@ -29,3 +29,5 @@ export const momentum = new Momentum(environment.apiUrl, {
 	socket: true
 });
 momentum.client.inject(true);
+
+momentum.on('auth/session-expired', () => momentum.auth.logout());

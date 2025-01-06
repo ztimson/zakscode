@@ -34,7 +34,7 @@ function send(name: string, email: string, subject: string, message: string) {
 	return momentum.email.send({
 		to: ['zaktimson@gmail.com', email],
 		subject: `ZaksCode: ${subject}`,
-		body: {template: 'email', data: {body: `From: ${name} &lt;${email}&gt;<br><br>${message}`}}
+		body: `From: ${name} &lt;${email}&gt;<br><br>${message}`
 	});
 }
 
