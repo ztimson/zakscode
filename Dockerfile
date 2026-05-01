@@ -16,6 +16,6 @@ COPY . .
 RUN if [ ! -d "dist" ]; then npm install && npm run build; fi
 
 # Use Nginx to serve
-FROM git.zakscode.com/ztimson/momentum:latest
+FROM git.zakscode.com/momentum/momentum:latest
 RUN rm -rf /app/server/public/assets /app/server/public/index.html
 COPY --from=build /app/dist /app/server/public
