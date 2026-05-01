@@ -31,7 +31,7 @@ function validateEmail(email: string) {
 }
 
 function send(name: string, email: string, subject: string, message: string) {
-	return momentum.email.send({
+	return momentum.email.create({
 		to: ['zaktimson@gmail.com', email],
 		subject: `ZaksCode: ${subject}`,
 		body: `From: ${name} &lt;${email}&gt;<br><br>${message}`
