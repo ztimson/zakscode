@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@ztimson/momentum": "^1.1.9",
+		"@ztimson/utils": "^0.29.4",
 		"vue": "^3.3.11",
 		"vue-router": "^4.2.5"
 	},

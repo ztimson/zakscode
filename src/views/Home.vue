@@ -5,13 +5,15 @@ import Konsole from '@/components/konsole.vue';
 import Projects from '@/components/projects.vue';
 import Refrences from '@/components/refrences.vue';
 import {momentum} from '@/services/momentum.service';
+import {sortByProp} from '@ztimson/utils';
 import {ref} from 'vue';
 
 // Get favorites
 const products = ref<any[]>([]);
 const openSource = ref<any[]>([]);
 momentum.data.read('Repos').then(resp =>
-	resp.forEach((r: any) => (r.product ? products : openSource).value.push(r)));
+	resp.toSorted(sortByProp('order'))
+		.forEach((r: any) => (r.product ? products : openSource).value.push(r)));
 
 // Get repository count
 let remainder = ref(0);

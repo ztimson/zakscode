@@ -1,6 +1,6 @@
 const devMode = location?.port == '5173';
 
 export const environment = {
-	apiUrl: devMode ? 'http://localhost' : location.origin,
+	apiUrl: 'https://zakscode.com',
 	devMode
 }
