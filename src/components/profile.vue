@@ -20,7 +20,7 @@ import Icon from '@/components/icon.vue';
 				DEVOPS & SOFTWARE ENGINEER
 			</h2>
 			<ul class="m-0 p-0 text-start" style="list-style: none">
-				<li><icon name="map-marker-alt" class="me-1"/> Toronto Ontario, Canada</li>
+				<li><icon name="map-marker-alt" class="me-1"/> London Ontario, Canada</li>
 				<li><icon name="envelope" class="me-1"/> <a href="mailto:zaktimson@gmail.com" target="_blank">zaktimson@gmail.com</a></li>
 				<li><icon name="github" class="fa-brands me-1"/> <a href="https://github.com/ztimson" target="_blank">github.com/ztimson</a></li>
 				<li><icon name="git-alt" class="fa-brands me-1"/> <a href="https://git.zakscode.com" target="_blank">git.zakscode.com</a></li>
