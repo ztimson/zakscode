@@ -40,9 +40,9 @@ fetch('https://git.zakscode.com/api/v1/repos/search?limit=1000', {
 			</div>
 			<div class="d-flex flex-wrap justify-content-around">
 				<card color="#6aa84f" icon="clipboard" offset="1px" title="Plan" text="Working with the client we will identify the goals of the project. This includes things like the target audience, use case, features, style, and delivery."/>
-				<card color="#6d9eeb" icon="code" offset="2px" title="Code" text="Goals are broken down into tasks and prioritized in our ticketing system. Using CI/CD, tasks are automatically deployed for testing as they are completed."/>
+				<card color="#6d9eeb" icon="code" offset="2px" title="Develop" text="Goals are broken down into tasks and prioritized in our ticketing system. We then quickly prototype using AI and CI/CD to deliver requests with short delay"/>
 				<card color="#e69138" icon="message" offset="3px" title="Feedback" text="Clients are notified with the release notes and can test at their convenience. Any critiques can be communicated directly to us or through our ticketing system."/>
-				<card color="#674ea7" icon="play" offset="2px" title="Release" text="Once all goals are complete we will work with you to deploy the product to any location. Once setup, future updates are automatically deployed to our clients."/>
+				<card color="#674ea7" icon="play" offset="2px" title="Release" text="Once all goals are complete we do a final cleanup and work with you to automatically deploy the product & future updates to any location"/>
 			</div>
 		</div>
 

@@ -17,7 +17,7 @@ import Icon from '@/components/icon.vue';
 		<div class="me-sm-5">
 			<h1 class="m-0" style="font-size: 2.5rem">Zakary Timson</h1>
 			<h2 class="mt-0 text-muted" style="font-size: 1.25rem">
-				DEVOPS & SOFTWARE ENGINEER
+				AI SOFTWARE ENGINEER
 			</h2>
 			<ul class="m-0 p-0 text-start" style="list-style: none">
 				<li><icon name="map-marker-alt" class="me-1"/> London Ontario, Canada</li>
