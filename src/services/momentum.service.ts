@@ -1,7 +1,7 @@
 import {environment} from '@/environments/environment';
+import {Momentum} from '@ztimson/momentum';
 import {PathEvent} from '@ztimson/utils';
 import {ref, onUnmounted} from 'vue';
-import {Momentum} from '@ztimson/momentum';
 
 export function mRef<T>(event: string, get: (event?: PathEvent, ...args: any[]) => T | Promise<T>): any;
 export function mRef<T>(event: string, init: () => T | Promise<T>, get: (event: PathEvent, ...args: any[]) => T | Promise<T>): any;
@@ -23,14 +23,9 @@ export function mWatch(event: string, get: (event?: PathEvent, ...args: any[]) =
 }
 
 export const momentum = new Momentum(environment.apiUrl, {
-	app: 'ZaksCode',
-	logLevel: 'ERROR',
-	persist: true,
-	socket: true
+	app: "ZaksCode",
+	analytics: "prompt",
+	logLevel: "ERROR",
 });
-momentum.client.inject(true);
 
-momentum.on('auth/session-expired', () => {
-	momentum.auth.logout();
-	location.reload();
-});
+momentum.auth.on('logout', () => location.reload());

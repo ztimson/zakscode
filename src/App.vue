@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Foot from '@/components/foot.vue';
 import Profile from '@/components/profile.vue';
+import {momentum} from '@/services/momentum.service';
+
+momentum.client.inject();
 </script>
 
 <template>
