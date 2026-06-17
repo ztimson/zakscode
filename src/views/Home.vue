@@ -6,23 +6,31 @@ import Projects from '@/components/projects.vue';
 import Refrences from '@/components/refrences.vue';
 import {momentum} from '@/services/momentum.service';
 import {sortByProp} from '@ztimson/utils';
-import {ref} from 'vue';
+import {computed, onMounted, ref, watch} from 'vue';
 
 // Get favorites
-const products = ref<any[]>([]);
-const openSource = ref<any[]>([]);
+const showcase = ref<any[]>([]);
 momentum.data.read('Repos').then(resp =>
-	resp.toSorted(sortByProp('order'))
-		.forEach((r: any) => (r.product ? products : openSource).value.push(r)));
+	showcase.value = resp.toSorted(sortByProp('order'))
+);
+
+const groups = computed(() => showcase.value.reduce((acc, r: any) => {
+	if(!acc[r.type]) acc[r.type] = [];
+	acc[r.type].push(r);
+	return acc;
+}, {}))
 
 // Get repository count
-let remainder = ref(0);
-fetch('https://git.zakscode.com/api/v1/repos/search?limit=1000', {
-	method: 'get',
-	headers: {"Content-Type": "application/json"}
-}).then(async (resp: any) => {
-	const data = (await resp.json())?.data;
-	remainder.value = data.length - openSource.value.length;
+let projects = ref(0);
+const remainder = computed(() => projects.value - showcase.value.filter(r => r.source).length);
+
+onMounted(() => {
+	fetch('https://git.zakscode.com/api/v1/repos/search?limit=1000', {
+		method: 'get',
+		headers: {"Content-Type": "application/json"}
+	}).then(async (resp: any) => {
+		projects.value = (await resp.json())?.data?.length;
+	});
 });
 </script>
 
@@ -64,13 +72,9 @@ fetch('https://git.zakscode.com/api/v1/repos/search?limit=1000', {
 		<div class="mb-5">
 			<h3 class="m-0">Projects</h3>
 			<hr class="mb-4">
-			<div class="mb-4">
-				<h4 class="mb-3 text-muted">Products & Services</h4>
-				<projects :projects="products"/>
-			</div>
-			<div>
-				<h4 class="mb-3 text-muted">Open Source</h4>
-				<projects :projects="openSource"/>
+			<div class="mb-4" v-for="(group, name) in groups">
+				<h4 class="mb-3 text-muted">{{name}}</h4>
+				<projects :projects="group"/>
 			</div>
 			<a v-if="remainder" class="float-end m-2" href="https://git.zakscode.com/explore" target="_blank">See {{remainder}} More...</a>
 		</div>
