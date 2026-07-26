@@ -80,3 +80,13 @@ jobs:
                         docker push "docker.io/${{secrets.DOCKER_HUB_IMAGE}}:latest"
                       fi
                     fi
+
+    deploy:
+        name: Deploy Container
+        runs-on: ubuntu-latest
+        container: node
+        needs:
+            - container
+        steps:
+            - name: Deploy
+              run: curl -X POST https://manage.zakscode.com/api/stacks/webhooks/3c8ec201-e8ad-4878-b35a-0f6a99d5f6cf
