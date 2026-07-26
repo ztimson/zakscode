@@ -11,8 +11,8 @@
 		"type-check": "vue-tsc --build --force"
 	},
 	"dependencies": {
-		"@ztimson/momentum": "^1.1.9",
-		"@ztimson/utils": "^0.29.4",
+		"@ztimson/momentum": "^1.5.4",
+		"@ztimson/utils": "^0.30.2",
 		"vue": "^3.3.11",
 		"vue-router": "^4.2.5"
 	},
