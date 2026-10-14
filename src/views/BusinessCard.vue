@@ -143,7 +143,7 @@ onMounted(async () => {
 			<!-- Details -->
 			<ul class="bc-list">
 				<li v-for="r in rows" :key="r.key" class="bc-row">
-					<span class="bc-row-icon"><icon :name="r.icon" :class="{'fa-brands': r.brand}" /></span>
+					<span class="bc-row-icon"><icon :name="r.icon" :class="`fa fa-${r.icon}`" /></span>
 					<div class="bc-row-text">
 						<span class="bc-row-label">{{r.label}}</span>
 						<a v-if="r.href" class="bc-row-value" :href="r.href" :target="r.href.startsWith('http') ? '_blank' : undefined" rel="noopener">{{r.value}}</a>
